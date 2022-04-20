@@ -5,7 +5,7 @@ module.exports = {
         try{
             const authentication = req.query.authentication;
             const persona = req.query.persona;
-            console.log(authentication);
+            // console.log(authentication);
             switch(persona){
                 case 'Policia':
                     var authFound = await Auth.getAuthPolicia(authentication);

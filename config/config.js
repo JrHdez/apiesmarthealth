@@ -10,6 +10,15 @@ types.setTypeParser(1114, function(stringValue){
     return stringValue;
 });
 
+
+// const databaseConfig = {
+//     'host': 'localhost',
+//     'port': 5432,
+//     'database': 'stcolomb_smartHealth',
+//     'user': 'stcolomb_junior',
+//     'password': 'Espinosa99.'
+// };
+
 const databaseConfig = {
     'host': '127.0.0.1',
     'port': 5432,
@@ -17,13 +26,7 @@ const databaseConfig = {
     'user': 'postgres',
     'password': 'DataPostGF104'
 };
-// const databaseConfig = {
-//     'host': 'localhost',
-//     'port': 5432,
-//     'database': 'stcolomb_smartHealth',
-//     'user': 'stcolomb_junior-smartek',
-//     'password': 'esmart2021health'
-// };
+
 const db = pgp(databaseConfig);
 
 module.exports = db;

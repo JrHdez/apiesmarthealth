@@ -20,13 +20,22 @@ module.exports = {
                     "include_player_ids": [`${data.notificationid}`],
                     "url": `https://maps.google.com/?q=${latitude},${longitude}`
                 };
+                    
+                // fetch("https://onesignal.com/api/v1/notifications",{
+                //     method: "POST",
+                //     body: notification,
+                //     headers: {
+                //         'Content-type': 'application/json',
+                //         'Authorization': 'Basic YzE1NmNlN2ItMzQ4MS00ODJjLTgwMjAtNTE3MmE4YTVhYzU2'
+                //     }
+                // }).then(res => res.json()).then(res => console.log(res));
 
                 axios.post("https://onesignal.com/api/v1/notifications",notification,{
                     headers: {
                         'Content-type': 'application/json',
                         'Authorization': 'Basic YzE1NmNlN2ItMzQ4MS00ODJjLTgwMjAtNTE3MmE4YTVhYzU2'
                     }
-                })
+                }).then(response => console.log(response)).catch(error => console.log('Axios error mandando post req',error));
 
                 return res.status(201).json({
                     message: 'Se ha identificado el código',
@@ -42,7 +51,7 @@ module.exports = {
         }catch(error){
             console.log(`Error al obtener cotizaciones ${error}`);
             return res.status(501).json({
-                message: 'Hubo un error al tratar de obtener las cotizaciones',
+                message: 'Hubo un error al tratar de obtener la informacion del usuario',
                 error: error,
                 success: false
             })

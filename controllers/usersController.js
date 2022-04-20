@@ -6,7 +6,7 @@ module.exports = {
     async getAll(req, res, next){
         try {
             const data = await User.getAll();
-            console.log(`Usuarios: ${data}`);
+            // console.log(`Usuarios: ${data}`);
             return  res.status(201).json(data);
         } catch (error) {
             console.log(`Error: ${error}`);
@@ -54,7 +54,7 @@ module.exports = {
                 await User.updateToken(myUser.id, `JWT ${token}`);
                 await User.updateNotificationID(myUser.id, notificationID);
 
-                console.log(`Usuaario enviado: ` + data);
+                // console.log(`Usuaario enviado: ` + data);
 
                 return res.status(201).json({
                     success: true,

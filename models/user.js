@@ -213,7 +213,7 @@ User.createForm3 = (info) => {
         )   
     VALUES($1, $2, $3, $4, $5, $6)
     `;
-    console.log(info);
+
     return db.oneOrNone(sql, [
         info.idPaciente,
         info.tipoAntecedente,
@@ -387,7 +387,6 @@ User.findByCod = (cod) => {
     WHERE 
         pacientes.bandcode = $1
         `;
-    console.log(cod);
     return db.manyOrNone(sql,cod);
 
     // id,
@@ -497,7 +496,7 @@ User.findMedById = (id_paciente) => {
     SELECT 
         medicamento,
         laboratorio,
-        formula
+        formula AS "Dosis"
     FROM 
         medicamentos 
     WHERE 
@@ -565,13 +564,7 @@ User.isPasswordMatched = (candidatePassword, hash) => {
     return false;
 }
 
-User.isPasswordMatched = (candidatePassword, hash) => {
-    const myPasswordHashed = crypto.createHash('md5').update(candidatePassword).digest('hex');
-    if(myPasswordHashed === hash) {
-        return true;
-    }
-    return false;
-}
+
 
 
 //EDICION DE LA INFORMACION POR EL CLIENTE
