@@ -1,5 +1,5 @@
 const QR = require('../models/qr');
-const axios = require('axios')
+const axios = require('axios');
 
 
 
@@ -13,7 +13,7 @@ module.exports = {
             // console.log(`ubic`,latitude,longitude);
             if (data){
                 const notification = {
-                    "app_id": "c790b704-4abc-4caa-8bf3-0b801cd9c5a0",
+                    "app_id": "d972c946-2ec3-48b7-bf2b-cc89f84320db",
                     "data": {"userId": "PostMan1234"},
                     "contents": {"en": `${data.name}, el código QR ha sido escaneado. Toca para mirar la ubicación`, "es": "Este mensaje está en español"},
                     "heading": {"en": "Alerta", "es": "Este es el título"},
@@ -33,7 +33,7 @@ module.exports = {
                 axios.post("https://onesignal.com/api/v1/notifications",notification,{
                     headers: {
                         'Content-type': 'application/json',
-                        'Authorization': 'Basic YzE1NmNlN2ItMzQ4MS00ODJjLTgwMjAtNTE3MmE4YTVhYzU2'
+                        'Authorization': 'Basic MzliM2VmN2EtNDBjNy00ZjY1LTlhYmQtYjNjOTM5MTU0YThh'
                     }
                 }).then(response => console.log(response)).catch(error => console.log('Axios error mandando post req',error));
 

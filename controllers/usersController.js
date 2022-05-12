@@ -49,7 +49,7 @@ module.exports = {
                     session_token: `JWT ${token}`
                     // roles: myUser.roles
                 }
-                console.log(data);
+ 
 
                 await User.updateToken(myUser.id, `JWT ${token}`);
                 await User.updateNotificationID(myUser.id, notificationID);
@@ -235,12 +235,10 @@ module.exports = {
             if (ref == 'contacts'){
                 const idUsuario = req.query.id;
                 var data = await User.findContactsById(idUsuario);
-                console.log(data.length);
             }
 
             if (ref == 'paciente'){
                 var data = await User.findByCod(cod);
-                console.log(data.length);
             }
             if (ref == 'condicion'){
                 const enfermedad = await User.findEnfById(idPaciente);

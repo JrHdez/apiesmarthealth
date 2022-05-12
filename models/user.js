@@ -362,6 +362,7 @@ User.updateContact = (info) => {
 User.findByCod = (cod) => {
     const sql = `
     SELECT
+        a_cargo_id, 
         pacientes.id, 
         nombre,
         apellido,
