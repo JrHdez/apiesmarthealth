@@ -205,6 +205,18 @@ module.exports = {
     async registerUser(req, res, next){
         try {
             const user = req.body;
+            
+            const usuarioExiste = User.findByEmail();
+            
+            
+            if(usuarioExiste){
+                return res.status(501).json({
+                    success: false,
+                    message: 'El usuario ya se encuentra registrado en el sistema.',
+                });
+            }          
+            
+
             const data = await User.create(user);
             // await Rol.create(data.id, 1); //Estableciedo rol por defecto (cliente)
             return res.status(201).json({

@@ -3,30 +3,31 @@ const Auth = require('../models/authentication');
 module.exports = {
     async getAuth(req, res, nect){
         try{
+            const numeroID = req.query.numeroID;
             const authentication = req.query.authentication;
             const persona = req.query.persona;
             // console.log(authentication);
             switch(persona){
                 case 'Policia':
-                    var authFound = await Auth.getAuthPolicia(authentication);
+                    var authFound = await Auth.getAuthPolicia(numeroID,authentication);
                     break
                 case 'Bombero':
-                    var authFound = await Auth.getAuthBombero(authentication);
+                    var authFound = await Auth.getAuthBombero(numeroID,authentication);
                     break
                 case 'Defensa civíl':
-                    var authFound = await Auth.getAuthDefensaCivil(authentication);
+                    var authFound = await Auth.getAuthDefensaCivil(numeroID,authentication);
                     break    
                 case 'Personal médico':
-                var authFound = await Auth.getAuthMedicina(authentication);
+                var authFound = await Auth.getAuthMedicina(numeroID,authentication);
                 break
             }
-
+            console.log(authFound);
 
             // console.log(`Cotizacion ${JSON.stringify(auth)}`);
             if  (!authFound){
                 return res.status(401).json({
                     success: false,
-                    message: 'El usuario no fue encontrado',
+                    message: 'No fue posible autenticar',
         
                 });
             }

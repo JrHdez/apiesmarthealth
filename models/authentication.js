@@ -3,52 +3,53 @@ const crypto = require("crypto");
 
 const Authentication = {};
 
-Authentication.getAuthPolicia = (auth) => {
+Authentication.getAuthPolicia = (numeroID, auth) => {
+    console.log(numeroID,auth);
     sql = `
     SELECT 
         * 
     FROM 
         dbpolicia
     WHERE
-        placa=$1
+        cedula=$1 AND placa=$2  
     `;
-    return db.oneOrNone(sql,auth);
+    return db.oneOrNone(sql,[numeroID,auth]);
 }
 
-Authentication.getAuthBombero = (auth) => {
+Authentication.getAuthBombero = (numeroID,auth) => {
     sql = `
     SELECT 
         * 
     FROM 
         dbbomberos
     WHERE
-        registro_bomberos=$1
+        cedula=$1 AND registro_bomberos=$2
     `;
-    return db.oneOrNone(sql,auth);
+    return db.oneOrNone(sql,[numeroID,auth]);
 }
 
-Authentication.getAuthDefensaCivil = (auth) => {
+Authentication.getAuthDefensaCivil = (numeroID,auth) => {
     sql = `
     SELECT 
         * 
     FROM 
         dbdefensacivil
     WHERE
-        registro_defensa_civil=$1
+        cedula=$1 ADN registro_defensa_civil=$2
     `;
-    return db.oneOrNone(sql,auth);
+    return db.oneOrNone(sql,[numeroID,auth]);
 }
 
-Authentication.getAuthMedicina = (auth) => {
+Authentication.getAuthMedicina = (numeroID,auth) => {
     sql = `
     SELECT 
         * 
     FROM 
         dbmedicina
     WHERE
-        registro_medico=$1
+        cedula=$1 AND registro_medico=$2
     `;
-    return db.oneOrNone(sql,auth);
+    return db.oneOrNone(sql,[numeroID,auth]);
 }
 
 Authentication.findByBandCode = (bandCode) => {
