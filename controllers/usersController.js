@@ -206,15 +206,15 @@ module.exports = {
         try {
             const user = req.body;
             
-            const usuarioExiste = User.findByEmail();
+            // const usuarioExiste = User.findByEmail();
             
             
-            if(usuarioExiste){
-                return res.status(501).json({
-                    success: false,
-                    message: 'El usuario ya se encuentra registrado en el sistema.',
-                });
-            }          
+            // if(usuarioExiste){
+            //     return res.status(501).json({
+            //         success: false,
+            //         message: 'El usuario ya se encuentra registrado en el sistema.',
+            //     });
+            // }          
             
 
             const data = await User.create(user);
